@@ -4,6 +4,11 @@ import { ConnectStep } from "./steps/connect/ConnectStep";
 import { DiscoveryStep } from "./steps/discovery/DiscoveryStep";
 import { useComputedHeightFromPageHeader } from "./hooks/UseComputedHeightFromPageHeader";
 import { useDiscoverySources } from "./contexts/discovery-sources/Context";
+import { PrepareMigrationStep } from "./steps/prepare-migration/PrepareMigrationStep";
+
+const openAssistedInstaller = (): void => {
+  window.open("https://console.dev.redhat.com/openshift/assisted-installer/clusters/~new?source=assisted_migration", "_blank");
+};
 
 export const MigrationWizard: React.FC = () => {
   const computedHeight = useComputedHeightFromPageHeader();
@@ -30,8 +35,15 @@ export const MigrationWizard: React.FC = () => {
       >
         <DiscoveryStep />
       </WizardStep>
-      <WizardStep name="Plan" id="plan-step" footer={{ isCancelHidden: true }}>
-        <div>Plan step</div>
+      <WizardStep
+        name="Plan"
+        id="plan-step"
+        footer={{
+          nextButtonText: "Let's create a new cluster",
+          onNext: openAssistedInstaller,
+        }}
+      >
+        <PrepareMigrationStep />
       </WizardStep>
     </Wizard>
   );

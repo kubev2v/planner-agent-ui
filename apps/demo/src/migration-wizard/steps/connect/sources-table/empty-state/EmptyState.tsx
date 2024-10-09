@@ -95,7 +95,8 @@ export const EmptyState: React.FC = () => {
           onSubmit={async (event) => {
             const form = event.currentTarget;
             const name = form["discoverySourceName"].value as string;
-            await discoverySourcesContext.downloadSource(name);
+            const sshKey = form["discoverySourceSshKey"].value as string;
+            await discoverySourcesContext.downloadSource(name, sshKey);
             toggleDiscoverySourceSetupModal();
             await discoverySourcesContext.listSources();
           }}

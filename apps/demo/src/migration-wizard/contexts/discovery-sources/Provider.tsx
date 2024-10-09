@@ -24,19 +24,19 @@ export const Provider: React.FC<PropsWithChildren> = (props) => {
     return deletedSource;
   });
 
-  const [createSourceState, createSource] = useAsyncFn(async (name: string) => {
+  const [createSourceState, createSource] = useAsyncFn(async (name: string, sshKey: string) => {
     const createdSource = await sourceApi.createSource({
-      sourceCreate: { name },
+      sourceCreate: { name, sshKey },
     });
     return createdSource;
   });
 
   const [downloadSourceState, downloadSource] = useAsyncFn(
-    async (sourceName: string): Promise<void> => {
+    async (sourceName: string, sourceSshKey: string): Promise<void> => {
       const anchor = document.createElement("a");
       anchor.download = sourceName + ".ova";
 
-      const newSource = await createSource(sourceName);
+      const newSource = await createSource(sourceName, sourceSshKey);
       // TODO(jkilzi): See: ECOPROJECT-2192. 
       // Then don't forget to  remove the '/planner/' prefix in production.
       // const image = await sourceApi.getSourceImage({ id: newSource.id }); // This API is useless in production

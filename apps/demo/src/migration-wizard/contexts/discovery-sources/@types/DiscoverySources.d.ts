@@ -12,8 +12,8 @@ declare namespace DiscoverySources {
     isPolling: boolean;
     listSources: () => Promise<Source[]>;
     deleteSource: (id: string) => Promise<Source>;
-    createSource: (name: string) => Promise<Source>;
-    downloadSource: (sourceName: string) => Promise<void>;
+    createSource: (name: string, sourceSshKey: string) => Promise<Source>;
+    downloadSource: (sourceName: string, sourceSshKey: string) => Promise<void>;
     startPolling: (delay: number) => void;
     stopPolling: () => void;
   };

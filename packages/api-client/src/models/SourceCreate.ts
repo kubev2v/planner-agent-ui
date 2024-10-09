@@ -20,11 +20,17 @@ import { mapValues } from '../runtime';
  */
 export interface SourceCreate {
     /**
-     * 
+     *
      * @type {string}
      * @memberof SourceCreate
      */
     name: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SourceCreate
+     */
+    sshKey: string;
 }
 
 /**
@@ -32,6 +38,7 @@ export interface SourceCreate {
  */
 export function instanceOfSourceCreate(value: object): value is SourceCreate {
     if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('sshKey' in value) || value['sshKey'] === undefined) return false;
     return true;
 }
 
@@ -46,6 +53,7 @@ export function SourceCreateFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'name': json['name'],
+        'sshKey': json['sshKey'],
     };
 }
 
@@ -56,6 +64,7 @@ export function SourceCreateToJSON(value?: SourceCreate | null): any {
     return {
         
         'name': value['name'],
+        'sshKey': value['sshKey'],
     };
 }
 

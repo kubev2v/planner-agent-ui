@@ -1,5 +1,5 @@
-.npmignore
 README.md
+src/apis/HealthApi.ts
 src/apis/ImageApi.ts
 src/apis/SourceApi.ts
 src/index.ts

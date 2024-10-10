@@ -86,6 +86,9 @@ export const useViewModel = (): LoginFormViewModelInterface => {
   return {
     formState,
     formRef,
+    urlControlHelperText: "The URL of the vCenter API endpoint, for example: https://vCenter-host-example.com/sdk",
+    usernameControlHelperText: "A username and domain for the vCenter API endpoint, for example: user@vsphere.local",
+    passwordControlHelperText: "A user password for connecting to the vCenter API endpoint",
     urlControlStateVariant: useMemo<FormControlValidatedStateVariant>(() => {
       switch (formState) {
         case FormStates.CredentialsAccepted:

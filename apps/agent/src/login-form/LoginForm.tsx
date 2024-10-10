@@ -67,8 +67,8 @@ export const LoginForm: React.FC<LoginForm.Props> = (props) => {
               type="url"
               name="url"
               isRequired
-              placeholder="https://vcenter_server_ip_address_or_fqdn"
-              pattern="https://.*"
+              placeholder="https://host-example.com/sdk"
+              pattern="^(https?:\/\/)(([a-zA-Z0-9\-\.]+)|(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}))(:[0-9]+)?(\/sdk)$"
               aria-describedby="url-helper-text"
             />
             {vm.urlControlHelperText && (
